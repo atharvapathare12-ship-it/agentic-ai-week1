@@ -1,4 +1,4 @@
-def print_tool(text: str) -> str:
-    print("[TOOL] Printing output:")
+def market_explainer_tool(text: str) -> str:
+    print("\n[TOOL] MARKET EXPLANATION:")
     print(text)
-    return "printed"
+    return "EXPLANATION_PRINTED"
