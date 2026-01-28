@@ -1,19 +1,18 @@
+import os
+
 def retrieve_context(query: str) -> str:
-    print("[RETRIEVER] Searching knowledge base")
+    print("[RETRIEVER] Reading knowledge.txt")
 
-    try:
-        with open("knowledge.txt", "r") as f:
-            lines = f.readlines()
+    # Get absolute path to this file's directory
+    base_dir = os.path.dirname(__file__)
 
-        matched = []
-        for line in lines:
-            if any(word.lower() in line.lower() for word in query.split()):
-                matched.append(line.strip())
+    # Build path to knowledge.txt inside app/
+    kb_path = os.path.join(base_dir, "knowledge.txt")
 
-        if not matched:
-            return "No relevant context found."
+    with open(kb_path, "r", encoding="utf-8") as f:
+        data = f.read()
 
-        return " ".join(matched)
+    print("[RETRIEVER] Context found:")
+    print(data)
 
-    except FileNotFoundError:
-        return "Knowledge file not found."
+    return data

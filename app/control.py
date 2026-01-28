@@ -1,14 +1,8 @@
 def decide_next_step(memory: dict) -> str:
-    print("\n[CONTROL] Current memory:", memory)
-
-    if memory["completed"]:
-        return "stop"
+    print("\n[CONTROL] Memory state:", memory)
 
     if len(memory["steps"]) == 0:
         return "call_llm"
-
-    if len(memory["steps"]) == 1:
-        return "use_tool"
 
     memory["completed"] = True
     return "stop"
