@@ -7,8 +7,5 @@ def decide_next_step(memory: dict) -> str:
     if len(memory["steps"]) == 0:
         return "call_llm"
 
-    if len(memory["steps"]) == 1:
-        return "use_tool"
-
     memory["completed"] = True
     return "stop"
